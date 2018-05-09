@@ -2,20 +2,29 @@ require("dotenv").config();
 var keys = require('keys.js');
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
-var userRequest = process.argv[2];
+var client = new Twitter(keys.twitter);
+var request = process.argv[2];
 var userSearch = process.argv[3];
 
-function spotifyThis() {
-spotify.search({ type: 'track', query: userSearch}, function(err, data) {
-  if (err) {
-    return console.log('Error occurred: ' + err);
-  }
- console.log(data.artist);
- console.log(data.track);
- console.log(data.album); 
-});
+function spotifyThisSong(userSearch) {
+  spotify.search({ type: 'track', query: userSearch}, function (err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+    console.log(data.artist);
+    console.log(data.track);
+    console.log(data.album);
+  });
 };
-var client = new Twitter(keys.twitter);
+function myTweets(userSearch) {
+  client.get('search/tweets', { q: 'node.js', count: 20}, function (error, tweets, response) {
+    var tweetsFound = tweets[i];
+    console.log(tweetsFound);
+    JSON.parse(tweetsFound);
+});
+
+}
+
 
 
 
