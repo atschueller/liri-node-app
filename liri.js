@@ -7,7 +7,7 @@ var request = process.argv[2];
 var userSearch = process.argv[3];
 
 function spotifyThisSong(userSearch) {
-  spotify.search({ type: 'track', query: userSearch}, function (err, data) {
+  spotify.search({ type: 'track', query: userSearch }, function (err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
@@ -17,13 +17,14 @@ function spotifyThisSong(userSearch) {
   });
 };
 function myTweets(userSearch) {
-  client.get('search/tweets', { q: 'node.js', count: 20}, function (error, tweets, response) {
+  client.get('search/tweets', { q: 'node.js', count: 20 }, function (tweets, response) {
     var tweetsFound = tweets[i];
-    console.log(tweetsFound);
-    JSON.parse(tweetsFound);
-});
-
-}
+    for (var i = 0; i < tweetsFound.length; i++) {
+      console.log(tweetsFound);
+      JSON.parse(tweetsFound);
+    };
+  });
+};
 
 
 
