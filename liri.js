@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 var keys = require('keys.js');
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
@@ -21,7 +22,7 @@ function myTweets(userSearch) {
     var tweetsFound = tweets[i];
     for (var i = 0; i < tweetsFound.length; i++) {
       console.log(tweetsFound);
-      JSON.parse(tweetsFound);
+      JSON.parse.forEach(tweetsFound);
     };
   });
 };
